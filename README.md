@@ -25,7 +25,10 @@ Your task is to **normalize the data** as much as possible for querying purposes
 4. What is the most common activity for Squirrels? (e.g. eating, running, etc..)
 5. A count of all Primary Fur Colors by Park.
 
-**The final output should be your python code that performs the ETL process, your final database schema populated, and the queries to answer the questions above.**
+### Output
+
+1. The final output should be your python code that performs the ETL process, your final database schema populated, and the queries to answer the questions above.
+2. Code and script should be runnable in a Docker container with Apache Spark.
 
 ### The Submission
 
