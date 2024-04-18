@@ -2,26 +2,41 @@
 
 This repository holds the Data Engineering Assignment. The assignment represents what a data engineer can be expected to do daily at Verusen: receiving raw data from different sources, transforming it into a structured format, and loading it into a database.
 
-## Getting Started
+The assignment is to create a **Python** script(s) that reads the data from the CSV files, transforms it into a structured format per the deliverable requirements, and loads it into a SQL (SQLLite, PSQL, MySQL, etc..) database.
 
-1. To get started, fork the repository.
-2. Then open up your terminal and clone the forked repository.
+## The Data
+
+The data directory contains data from [The Squirrel Census](https://www.thesquirrelcensus.com/). The data is in CSV format and contains two files: `/data/park-data.csv` and `/data/squirrel-data.csv`. The data is used to track the squirrel population in Central Park, New York City.
 
 ## The Assignment
-
-The assignment is to create a **Python** script that reads the data from the CSV files, transforms it into a structured format, and loads it into a SQL (SQLLite, PSQL, MySQL, etc..) database.
 
 ### The Requirements
 
 1. Idempotent: The script should be able to run multiple times without duplicating data in the database.
-2. Script should run in Apache Spark using PySpark.
+2. Script should run in Apache Spark (Docker container) using PySpark.
 
-## The Data
+### The Deliverables
 
-The data directory contains data from [The Squirrel Census](https://www.thesquirrelcensus.com/). The `/data` is in CSV format and contains two files: `squirrel_census_2019.csv` and `squirrel_census_2020.csv`. The data is used to track the squirrel population in Central Park, New York City.
+Your task is to **normalize the data** as much as possible for querying purposes. The queries and questions we are trying to optimize for are:
 
-## The Deliverables
+1. How many squirrels are there in each Park?
+2. How many squirrels are there in each Borough?
+3. A count of "Other Animal Sightings" by Park.
+4. What is the most common activity for Squirrels? (e.g. eating, running, etc..)
+5. A count of all Primary Fur Colors by Park.
 
-1. A Python script that reads the data from the CSV files, transforms it into a structured format, and loads it into a SQL database.
-2. A `requirements.txt` file that contains all the dependencies needed to run the script.
-3. A `README.md` file that explains how to run the script and any other information you think is important.
+**The final output should be your python code that performs the ETL process, your final database schema populated, and the queries to answer the questions above.**
+
+### The Submission
+
+Your submission will rest in your repository. The final product should be accompanied with a README.md file that explains how to run the script, and any other relevant information.
+
+We will talk through it as a team during the interview process.
+
+Key areas of interest include:
+
+- Code Structure: How well is your code organized? How clear is the logic?
+- Data Transformation: How well did you normalize the data?
+- Database Schema: How well did you design the database schema?
+- Development Env: How easy is it to get your code up and running?
+- Communication: How well did you document your code and how well can you explain your decisions?
