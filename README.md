@@ -1,45 +1,70 @@
-# Data Engineering Assignment
+# Data Engineering Assignment Solution
 
-This repository holds the Data Engineering Assignment. The assignment represents what a data engineer can be expected to do daily at Verusen: receiving raw data from different sources, transforming it into a structured format, and loading it into a database.
+This repository is my solution for the Data Engineering Assignment. Here are some of the decisions I took to solve the assigment:
 
-The assignment is to create a **Python** script(s) that reads the data from the CSV files, transforms it into a structured format per the deliverable requirements, and loads it into a SQL (SQLLite, PSQL, MySQL, etc..) database.
+- Use a SQLite to store the data, for simplicity's sake
+- Use poetry for dependency management.
+- Add an extra table `OtherAnimalSightings` to be able to count animal types by park. I ended up not using this because query number 3 did not ask to count by animal type.
 
-## The Data
+## Table of Contents
 
-The data directory contains data from [The Squirrel Census](https://www.thesquirrelcensus.com/). The data is in CSV format and contains two files: `/data/park-data.csv` and `/data/squirrel-data.csv`. The data is used to track the squirrel population in Central Park, New York City.
+- [Pre-requisites](#pre-requisites)
+- [Setup](#setup)
+- [Running the Code Locally](#running-the-code-locally)
+- [Running the Code in Docker](#running-the-code-in-docker)
 
-## The Assignment
+## Pre-requisites
 
-### The Requirements
+- Python 3.7 or higher.
+- Apache Spark (for local run).
+- Poetry for managing Python dependencies.
+- Docker.
 
-1. Idempotent: The script should be able to run multiple times without duplicating data in the database.
-2. Script should run in Apache Spark (Docker container) using PySpark.
+## Setup
 
-### The Deliverables
+1. **Clone the repository**:
 
-Your task is to **normalize the data** as much as possible for querying purposes. The queries and questions we are trying to optimize for are:
+    ```bash
+    git clone https://github.com/yourusername/squirrel-census.git
+    cd squirrel-census
+    ```
 
-1. How many squirrels are there in each Park?
-2. How many squirrels are there in each Borough?
-3. A count of "Other Animal Sightings" by Park.
-4. What is the most common activity for Squirrels? (e.g. eating, running, etc..)
-5. A count of all Primary Fur Colors by Park.
 
-### Output
+## Running the Code Locally
+1. **Install Python dependencies**:
 
-1. The final output should be your python code that performs the ETL process, your final database schema populated, and the queries to answer the questions above.
-2. Code and script should be runnable in a Docker container with Apache Spark.
+    Ensure you have Poetry installed and then install the dependencies:
 
-### The Submission
+    ```bash
+    poetry install --no-root
+    ```
 
-Your submission will rest in your repository. The final product should be accompanied with a README.md file that explains how to run the script, and any other relevant information.
+2. **Run the script**:
 
-We will talk through it as a team during the interview process.
+    ```bash
+    poetry run python main.py
+    ```
 
-Key areas of interest include:
+## Running the Code in Docker
 
-- Code Structure: How well is your code organized? How clear is the logic?
-- Data Transformation: How well did you normalize the data?
-- Database Schema: How well did you design the database schema?
-- Development Env: How easy is it to get your code up and running?
-- Communication: How well did you document your code and how well can you explain your decisions?
+1. **Build the Docker container**:
+
+    In the root directory of the project (where the `Dockerfile` is located), build the Docker container:
+
+    ```bash
+    docker build -t spark-squirrel-census .
+    ```
+
+2. **Run the Docker container**:
+
+    Run the Docker container:
+
+    ```bash
+    docker run --rm spark-squirrel-census
+    ```
+    
+    To store the squirrel_census.db locally, mount the current working directory:
+
+    ```bash
+    docker run --rm -v $(pwd):/app spark-squirrel-census
+    ```

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "data-engineer-assignment"
+version = "0.1.0"
+description = ""
+authors = ["Marcelo Llano <51483633+mllano20@users.noreply.github.com>"]
+license = "apache"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pyspark = "^3.5.1"
+sqlalchemy = "^2.0.29"
+pandas = "^2.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
